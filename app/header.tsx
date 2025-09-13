@@ -35,6 +35,7 @@ export default function Header() {
         p={3}
       >
         <NavLink href="/">Brewxplorer</NavLink>
+        <NavLink href="/brews">All Brews</NavLink>
         <NavLink href="/about">About</NavLink>
       </Stack>
     </Box>
