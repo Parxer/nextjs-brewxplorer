@@ -1,11 +1,12 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Stack, Text } from "@chakra-ui/react";
+import ContentWrapper from "@/app/components/contentWrapper";
 
 export default function Home() {
   return (
-    <Box as="main">
+    <ContentWrapper as="main">
       <Stack>
         <Text>Hi there world!</Text>
       </Stack>
-    </Box>
+    </ContentWrapper>
   );
 }

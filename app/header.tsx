@@ -1,16 +1,15 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Box, Link, Stack } from "@chakra-ui/react";
-import { FCWithChildren } from "@/app/types";
+import { Box, Image, Link, LinkProps, Stack } from "@chakra-ui/react";
+import ContentWrapper from "@/app/components/contentWrapper";
 
-const NavLink: FCWithChildren<{ href: string }> = ({ href, children }) => {
+const NavLink = ({ href, children }: LinkProps) => {
   const isActive = usePathname() === href;
   return (
     <Box as="li">
       <Link
         href={href}
-        p={2}
         borderBottom="3px solid"
         borderColor={isActive ? "gold" : "transparent"}
         _hover={{
@@ -27,17 +26,24 @@ const NavLink: FCWithChildren<{ href: string }> = ({ href, children }) => {
 
 export default function Header() {
   return (
-    <Box as="nav">
+    <ContentWrapper
+      as="nav"
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+    >
+      <Image src="/logo.png" alt="Brewxplorer logo" width={150} height={46} />
       <Stack
         direction={{ base: "column", md: "row" }}
         as="ul"
         position="sticky"
-        p={3}
+        gap={5}
+        paddingY={5}
       >
-        <NavLink href="/">Brewxplorer</NavLink>
+        <NavLink href="/">Home</NavLink>
         <NavLink href="/brews">All Brews</NavLink>
         <NavLink href="/about">About</NavLink>
       </Stack>
-    </Box>
+    </ContentWrapper>
   );
 }

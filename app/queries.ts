@@ -2,7 +2,7 @@ import { QueryCache, useQuery } from "@tanstack/react-query";
 import { safeFetch } from "@/app/api";
 import { QueryClient } from "@tanstack/query-core";
 import { Beer } from "@/app/types";
-import { toaster } from "@/components/toaster";
+import { toaster } from "@/app/components/toaster";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
