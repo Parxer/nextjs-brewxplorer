@@ -10,7 +10,13 @@ export default function ContentWrapper({
   children: ReactNode;
 } & SystemStyleObject) {
   return (
-    <Box as={as} maxWidth={1440} marginX="auto" paddingX={5} {...otherProps}>
+    <Box
+      as={as}
+      maxWidth={1440}
+      marginX="auto"
+      paddingX={[5, 5, 10]}
+      {...otherProps}
+    >
       {children}
     </Box>
   );

@@ -3,6 +3,7 @@ import { safeFetch } from "@/app/api";
 import { QueryClient } from "@tanstack/query-core";
 import { Beer } from "@/app/types";
 import { toaster } from "@/app/components/toaster";
+import { useSettings } from "@/app/settingsContext";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +31,8 @@ interface BeersProps {
 
 export const useBeersQuery = (props: BeersProps) => {
   const params = new URLSearchParams(Object.entries(props));
+  const { itemsPerPage } = useSettings();
+  params.set("per_page", itemsPerPage.toString());
   return useQuery({
     queryKey: ["beers"],
     queryFn: () => safeFetch<Beer[]>(`/beers?${params.toString()}`),

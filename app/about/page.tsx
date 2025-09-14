@@ -4,7 +4,7 @@ import { LuExternalLink } from "react-icons/lu";
 
 export default function Page() {
   return (
-    <ContentWrapper as="main">
+    <ContentWrapper as="main" marginY={10}>
       <Stack>
         <Box>
           <Heading>What is this?</Heading>

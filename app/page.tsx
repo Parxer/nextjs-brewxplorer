@@ -3,7 +3,7 @@ import ContentWrapper from "@/app/components/contentWrapper";
 
 export default function Home() {
   return (
-    <ContentWrapper as="main">
+    <ContentWrapper as="main" marginY={10}>
       <Stack>
         <Text>Hi there world!</Text>
       </Stack>

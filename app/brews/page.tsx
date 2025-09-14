@@ -9,7 +9,6 @@ import ContentWrapper from "@/app/components/contentWrapper";
 export default function Brews() {
   const { data, error, isLoading, refetch } = useBeersQuery({ page: 1 });
 
-  if (isLoading) return <BrewsLoader />;
   if (error)
     return (
       <Box>
@@ -20,14 +19,17 @@ export default function Brews() {
       </Box>
     );
   return (
-    <ContentWrapper as="main">
-      <SimpleGrid as="ol" columns={{ base: 1, md: 2, xl: 3 }} gap={10} p={10}>
-        {data?.length &&
-          data.map((item) => (
+    <ContentWrapper as="main" marginY={10}>
+      <SimpleGrid as="ol" columns={{ base: 1, md: 2, xl: 3 }} gap={10}>
+        {isLoading ? (
+          <BrewsLoader />
+        ) : (
+          data?.map((item) => (
             <Box as="li" key={item.id}>
               <BeerCard {...item} />
             </Box>
-          ))}
+          ))
+        )}
       </SimpleGrid>
     </ContentWrapper>
   );
