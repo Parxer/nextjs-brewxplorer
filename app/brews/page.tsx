@@ -8,8 +8,9 @@ import ContentWrapper from "@/app/components/contentWrapper";
 import PaginationControls from "@/app/components/paginationControls";
 import { parseAsInteger, useQueryState } from "nuqs";
 import ListControls from "@/app/brews/listControls";
+import { Suspense } from "react";
 
-export default function Brews() {
+const Brews = () => {
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
   const { data, error, isLoading, refetch } = useBeersQuery({ page });
 
@@ -38,5 +39,13 @@ export default function Brews() {
       </SimpleGrid>
       <PaginationControls page={page} setPage={setPage} />
     </ContentWrapper>
+  );
+};
+
+export default function BrewsPage() {
+  return (
+    <Suspense>
+      <Brews />
+    </Suspense>
   );
 }
