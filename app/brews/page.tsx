@@ -5,9 +5,13 @@ import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
 import BeerCard from "@/app/brews/beerCard";
 import { BrewsLoader } from "@/app/brews/loader";
 import ContentWrapper from "@/app/components/contentWrapper";
+import PaginationControls from "@/app/components/paginationControls";
+import { parseAsInteger, useQueryState } from "nuqs";
+import ListControls from "@/app/brews/listControls";
 
 export default function Brews() {
-  const { data, error, isLoading, refetch } = useBeersQuery({ page: 1 });
+  const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
+  const { data, error, isLoading, refetch } = useBeersQuery({ page });
 
   if (error)
     return (
@@ -20,6 +24,7 @@ export default function Brews() {
     );
   return (
     <ContentWrapper as="main" marginY={10}>
+      <ListControls />
       <SimpleGrid as="ol" columns={{ base: 1, md: 2, xl: 3 }} gap={10}>
         {isLoading ? (
           <BrewsLoader />
@@ -31,6 +36,7 @@ export default function Brews() {
           ))
         )}
       </SimpleGrid>
+      <PaginationControls page={page} setPage={setPage} />
     </ContentWrapper>
   );
 }

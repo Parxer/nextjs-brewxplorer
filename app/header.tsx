@@ -80,6 +80,7 @@ export default function Header() {
       paddingY={5}
       bgColor="white"
       borderBottom="2px rgb(91, 51, 11) solid"
+      boxShadow="0 5px 5px rgba(0, 0, 0, 0.15)"
     >
       <Link href="/">
         <Image src="/logo.png" alt="Brewxplorer logo" width={150} height={46} />

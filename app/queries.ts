@@ -34,7 +34,7 @@ export const useBeersQuery = (props: BeersProps) => {
   const { itemsPerPage } = useSettings();
   params.set("per_page", itemsPerPage.toString());
   return useQuery({
-    queryKey: ["beers"],
+    queryKey: ["beers", props, itemsPerPage],
     queryFn: () => safeFetch<Beer[]>(`/beers?${params.toString()}`),
   });
 };

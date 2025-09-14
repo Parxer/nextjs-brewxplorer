@@ -1,11 +1,20 @@
-import { Context, createContext, FC, ReactNode, useContext } from "react";
+import {
+  Context,
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useState,
+} from "react";
 
 interface Settings {
   itemsPerPage: number;
+  setItemsPerPage: (page: number) => void;
 }
 
 const defaultSettings: Settings = {
   itemsPerPage: 18,
+  setItemsPerPage: () => null,
 };
 
 export const SettingsContext: Context<Settings> =
@@ -16,7 +25,10 @@ export const useSettings = () => {
 };
 
 export const SettingsProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const settings: Settings = { ...defaultSettings };
+  const [itemsPerPage, setItemsPerPage] = useState(
+    defaultSettings.itemsPerPage,
+  );
+  const settings: Settings = { itemsPerPage, setItemsPerPage };
   return (
     <SettingsContext.Provider value={settings}>
       {children}
