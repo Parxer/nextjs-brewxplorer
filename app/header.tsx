@@ -1,8 +1,17 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Box, Image, Link, LinkProps, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Drawer,
+  Image,
+  Link,
+  LinkProps,
+  Portal,
+  Stack,
+} from "@chakra-ui/react";
 import ContentWrapper from "@/app/components/contentWrapper";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const NavLink = ({ href, children }: LinkProps) => {
   const isActive = usePathname() === href;
@@ -24,6 +33,40 @@ const NavLink = ({ href, children }: LinkProps) => {
   );
 };
 
+const Menu = () => (
+  <Stack direction={{ base: "column", md: "row" }} as="ul" gap={5}>
+    <NavLink href="/">Home</NavLink>
+    <NavLink href="/brews">All Brews</NavLink>
+    <NavLink href="/about">About</NavLink>
+  </Stack>
+);
+
+const DesktopMenu = () => (
+  <Box display={["none", "none", "initial"]}>
+    <Menu />
+  </Box>
+);
+
+const MobileMenu = () => (
+  <Box display={["initial", "initial", "none"]}>
+    <Drawer.Root placement="end">
+      <Drawer.Trigger>
+        <GiHamburgerMenu size="2em" />
+      </Drawer.Trigger>
+      <Portal>
+        <Drawer.Backdrop />
+        <Drawer.Positioner>
+          <Drawer.Content maxWidth="40vw">
+            <Drawer.Body paddingY={8} justifyItems="end" textAlign="end">
+              <Menu />
+            </Drawer.Body>
+          </Drawer.Content>
+        </Drawer.Positioner>
+      </Portal>
+    </Drawer.Root>
+  </Box>
+);
+
 export default function Header() {
   return (
     <ContentWrapper
@@ -31,19 +74,18 @@ export default function Header() {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      position="sticky"
+      top={0}
+      zIndex={10}
+      paddingY={5}
+      bgColor="white"
+      borderBottom="2px rgb(91, 51, 11) solid"
     >
-      <Image src="/logo.png" alt="Brewxplorer logo" width={150} height={46} />
-      <Stack
-        direction={{ base: "column", md: "row" }}
-        as="ul"
-        position="sticky"
-        gap={5}
-        paddingY={5}
-      >
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/brews">All Brews</NavLink>
-        <NavLink href="/about">About</NavLink>
-      </Stack>
+      <Link href="/">
+        <Image src="/logo.png" alt="Brewxplorer logo" width={150} height={46} />
+      </Link>
+      <DesktopMenu />
+      <MobileMenu />
     </ContentWrapper>
   );
 }
