@@ -1,7 +1,7 @@
 "use client";
 
 import { useDailyBeerQuery } from "@/data/queries";
-import BeerCard from "@/app/brews/beerCard";
+import BeerCard from "@/app/components/beerCard";
 import { Box, Flex, Heading, IconButton } from "@chakra-ui/react";
 import { IoReload } from "react-icons/io5";
 import CardLoader from "@/app/components/cardLoader";

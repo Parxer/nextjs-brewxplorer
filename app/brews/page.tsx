@@ -2,7 +2,7 @@
 
 import { useBeersQuery } from "@/data/queries";
 import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
-import BeerCard from "@/app/brews/beerCard";
+import BeerCard from "@/app/components/beerCard";
 import { BrewsLoader } from "@/app/brews/loader";
 import ContentWrapper from "@/app/components/contentWrapper";
 import PaginationControls from "@/app/components/paginationControls";

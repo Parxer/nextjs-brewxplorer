@@ -22,7 +22,7 @@ export default function BeerCard({ id, name, image, description }: Beer) {
       />
       <Card.Body
         maxWidth={{ base: "100%", sm: "80%" }}
-        maxHeight={250}
+        height={250}
         overflow="hidden"
         position="relative"
       >
