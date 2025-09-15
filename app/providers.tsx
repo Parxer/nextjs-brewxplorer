@@ -3,7 +3,7 @@
 import { ChakraProvider, createSystem, defaultConfig } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/app/queries";
+import { queryClient } from "@/data/queries";
 import { SettingsProvider } from "@/app/settingsContext";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 

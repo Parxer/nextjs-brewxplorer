@@ -1,8 +1,9 @@
 import { Beer } from "@/app/types";
 import { Box, Card, Heading, Image, Link, Text } from "@chakra-ui/react";
-import { getImageUrl } from "@/app/api";
+import { getImageUrl } from "@/data/api";
 
 export default function BeerCard({ id, name, image, description }: Beer) {
+  // noinspection HtmlUnknownTarget
   return (
     <Card.Root
       flexDirection="row-reverse"
@@ -26,7 +27,7 @@ export default function BeerCard({ id, name, image, description }: Beer) {
         position="relative"
       >
         <Card.Title marginBottom={2}>
-          <Link href={`/beers/${id}`}>
+          <Link href={`/brews/${id}`}>
             <Heading size="xl">{name}</Heading>
           </Link>
         </Card.Title>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useBeersQuery } from "@/app/queries";
+import { useBeersQuery } from "@/data/queries";
 import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
 import BeerCard from "@/app/brews/beerCard";
 import { BrewsLoader } from "@/app/brews/loader";
