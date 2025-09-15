@@ -1,5 +1,6 @@
 import ContentWrapper from "@/app/components/contentWrapper";
-import { Heading, Link, Text } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
+import InternalLink from "@/app/components/internalLink";
 
 export default function BeerNotFound() {
   return (
@@ -8,9 +9,9 @@ export default function BeerNotFound() {
       <Text>
         Looks like this is not the beer you were looking for... Feel free to
         select one from{" "}
-        <Link href="/brews" variant="underline">
+        <InternalLink href="/brews" variant="underline">
           the list
-        </Link>
+        </InternalLink>
         !
       </Text>
     </ContentWrapper>

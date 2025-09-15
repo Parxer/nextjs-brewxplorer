@@ -6,7 +6,7 @@ export default function ExternalLink({
   ...linkProps
 }: LinkProps & { children?: React.ReactNode }) {
   return (
-    <Link {...linkProps} variant="underline">
+    <Link {...linkProps} variant="underline" target="_blank">
       {children} <LuExternalLink />
     </Link>
   );

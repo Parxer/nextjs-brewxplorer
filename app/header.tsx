@@ -1,23 +1,16 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import {
-  Box,
-  Drawer,
-  Image,
-  Link,
-  LinkProps,
-  Portal,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Drawer, Image, LinkProps, Portal, Stack } from "@chakra-ui/react";
 import ContentWrapper from "@/app/components/contentWrapper";
 import { GiHamburgerMenu } from "react-icons/gi";
+import InternalLink from "@/app/components/internalLink";
 
-const NavLink = ({ href, children }: LinkProps) => {
+const NavLink = ({ href, children }: LinkProps & { href: string }) => {
   const isActive = usePathname() === href;
   return (
     <Box as="li">
-      <Link
+      <InternalLink
         href={href}
         borderBottom="3px solid"
         borderColor={isActive ? "gold" : "transparent"}
@@ -28,7 +21,7 @@ const NavLink = ({ href, children }: LinkProps) => {
         textDecoration="none"
       >
         {children}
-      </Link>
+      </InternalLink>
     </Box>
   );
 };
@@ -82,9 +75,9 @@ export default function Header() {
       borderBottom="2px rgb(91, 51, 11) solid"
       boxShadow="0 5px 5px rgba(0, 0, 0, 0.15)"
     >
-      <Link href="/">
+      <InternalLink href="/">
         <Image src="/logo.png" alt="Brewxplorer logo" width={150} height={46} />
-      </Link>
+      </InternalLink>
       <DesktopMenu />
       <MobileMenu />
     </ContentWrapper>

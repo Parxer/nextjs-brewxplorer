@@ -1,6 +1,7 @@
 import { Beer } from "@/app/types";
-import { Box, Card, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Card, Heading, Image, Text } from "@chakra-ui/react";
 import { getImageUrl } from "@/data/api";
+import InternalLink from "@/app/components/internalLink";
 
 export default function BeerCard({ id, name, image, description }: Beer) {
   // noinspection HtmlUnknownTarget
@@ -27,9 +28,9 @@ export default function BeerCard({ id, name, image, description }: Beer) {
         position="relative"
       >
         <Card.Title marginBottom={2}>
-          <Link href={`/brews/${id}`}>
+          <InternalLink href={`/brews/${id}`}>
             <Heading size="xl">{name}</Heading>
-          </Link>
+          </InternalLink>
         </Card.Title>
         <Card.Description>{description}</Card.Description>
         <Box
@@ -42,9 +43,9 @@ export default function BeerCard({ id, name, image, description }: Beer) {
           background="linear-gradient(0deg, rgba(255, 255, 255, 1) 35%, rgba(255, 255, 255, 0) 100%)"
           alignContent="end"
         >
-          <Link href={`/beers/${id}`}>
+          <InternalLink href={`/beers/${id}`}>
             <Text fontSize="0.9em">read more...</Text>
-          </Link>
+          </InternalLink>
         </Box>
       </Card.Body>
     </Card.Root>
